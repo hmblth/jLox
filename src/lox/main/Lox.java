@@ -52,11 +52,13 @@ public class Lox {
 	private static void run(String source) {
 		Scanner scanner = new Scanner(source);
 		List<Token> tokens = scanner.scanTokens();
-		
-		// just print the tokens for now
-		for(Token token : tokens) {
-			System.out.println(token);
-		}
+		Parser parser = new Parser(tokens);
+		Expr expression = parser.parse();
+
+		// Stop if we had a syntax error
+		if (hadError) return;
+
+		System.out.println(new AstPrinter().print(expression));
 	}
 	
 	// print error method

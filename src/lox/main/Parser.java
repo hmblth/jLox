@@ -7,12 +7,22 @@ import static lox.main.TokenType.*;
 
 // same basic idea as scanner, only this time at a token level
 public class Parser {
+	private static class ParseError extends RuntimeException {}
+
 	private final List<Token> tokens;
 	private int current = 0;
 	
 	Parser(List<Token> tokens) {
 		this.tokens = tokens;
 	}
+
+	Expr parse() {
+	    try {
+	        return expression();
+        } catch (ParseError error) {
+	        return null;
+        }
+    }
 	
 	private Expr expression() {
 		return equality();
@@ -51,7 +61,7 @@ public class Parser {
 		while (match(MINUS, PLUS)) {
 			Token operator = previous();
 			Expr right = multiplication();
-			expr = new Expr.Binary(expr, operator, right)
+			expr = new Expr.Binary(expr, operator, right);
 		}
 		
 		return expr;
@@ -93,6 +103,8 @@ public class Parser {
 			consume(RIGHT_PAREN, "Expected ')' after expression");
 			return new Expr.Grouping(expr);
 		}
+
+		throw error(peek(), "Expecting expression.");
 	}
 	
 	private boolean match(TokenType... types) {
@@ -138,4 +150,26 @@ public class Parser {
 		Lox.error(token, message);
 		return new ParseError();
 	}
+
+	private void synchronize() {
+	    advance();
+
+	    while (!isAtEnd()) {
+	        if (previous().type == SEMICOLON) return;
+
+	        switch(peek().type) {
+                case CLASS:
+                case FUN:
+                case VAR:
+                case FOR:
+                case IF:
+                case WHILE:
+                case PRINT:
+                case RETURN:
+                    return;
+            }
+
+            advance();
+        }
+    }
 }
