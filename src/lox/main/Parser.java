@@ -23,11 +23,21 @@ public class Parser {
 	        return null;
         }
     }
-	
+
 	private Expr expression() {
-		return equality();
+		return comma();
 	}
-	
+
+	private Expr comma() {
+		Expr expr = equality();
+
+		while (match(COMMA)) {
+			expr = equality();
+		}
+
+		return expr;
+	}
+
 	private Expr equality() {
 		// parse initial expression as comparison, then check if there are other comparisons to check
 		Expr expr = comparison();
@@ -41,7 +51,8 @@ public class Parser {
 		
 		return expr;
 	}
-	
+
+
 	private Expr comparison() {
 		// nearly same as equality() with diff operators
 		Expr expr = addition();
@@ -54,7 +65,7 @@ public class Parser {
 		
 		return expr;
 	}
-	
+
 	private Expr addition() {
 		Expr expr = multiplication();
 		
@@ -68,14 +79,26 @@ public class Parser {
 	}
 	
 	private Expr multiplication() {
-		Expr expr = unary();
+		Expr expr = exponent();
 		
 		while (match(SLASH, STAR)) {
+			Token operator = previous();
+			Expr right = exponent();
+			expr = new Expr.Binary(expr, operator, right);
+		}
+		
+		return expr;
+	}
+
+	private Expr exponent() {
+		Expr expr = unary();
+
+		while (match(STAR_STAR)) {
 			Token operator = previous();
 			Expr right = unary();
 			expr = new Expr.Binary(expr, operator, right);
 		}
-		
+
 		return expr;
 	}
 

@@ -9,7 +9,7 @@ public class AstPrinter implements Expr.Visitor<String> {
 	
 	@Override
 	public String visitBinaryExpr(Expr.Binary expr) {
-		return parethesize(expr.Operator.lexeme, expr.left, expr.right);
+		return parethesize(expr.operator.lexeme, expr.left, expr.right);
 	}
 	
 	@Override
