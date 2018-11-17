@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c84c8955-8dde-4f94-9d89-3009c02bf76a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lox/main/Interpreter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lox/main/RuntimeError.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/AstPrinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Lox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/main/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/TokenType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lox/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/tool/GenerateAst.java" afterDir="false" />
-    </list>
+    <list default="true" id="c84c8955-8dde-4f94-9d89-3009c02bf76a" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,10 +16,10 @@
           <entry key="project.closed" value="4" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
-          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.13" value="2" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.18" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -80,11 +70,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="85" column="66" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />
+            <state relative-caret-position="255">
+              <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -92,7 +82,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lox/main/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1683">
+            <state relative-caret-position="880">
               <caret line="103" selection-start-line="103" selection-end-line="103" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,19 +91,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-              <folding>
-                <element signature="e#2340#2341#0" expanded="true" />
-                <element signature="e#2388#2389#0" expanded="true" />
-                <element signature="e#2459#2460#0" expanded="true" />
-                <element signature="e#2492#2493#0" expanded="true" />
-                <element signature="e#2931#2932#0" expanded="true" />
-                <element signature="e#2971#2972#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="748">
+              <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -178,9 +160,8 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-5" />
     <option name="width" value="1936" />
     <option name="height" value="1096" />
   </component>
@@ -281,6 +262,7 @@
       <workItem from="1542382510850" duration="412000" />
       <workItem from="1542386227366" duration="7814000" />
       <workItem from="1542396453802" duration="297000" />
+      <workItem from="1542471629056" duration="679000" />
     </task>
     <servers />
   </component>
@@ -296,10 +278,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9398000" />
+    <option name="totallyTimeSpent" value="10077000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -321,7 +303,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32952183" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.18496802" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.18710022" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -390,16 +372,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">
+    <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="85" column="66" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />
+        <state relative-caret-position="748">
+          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lox/main/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1683">
+        <state relative-caret-position="880">
           <caret line="103" selection-start-line="103" selection-end-line="103" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -407,18 +389,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">
+    <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
-          <folding>
-            <element signature="e#2340#2341#0" expanded="true" />
-            <element signature="e#2388#2389#0" expanded="true" />
-            <element signature="e#2459#2460#0" expanded="true" />
-            <element signature="e#2492#2493#0" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
-            <element signature="e#2971#2972#0" expanded="true" />
-          </folding>
+          <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
         </state>
       </provider>
     </entry>
