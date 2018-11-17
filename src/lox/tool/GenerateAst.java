@@ -11,7 +11,7 @@ public class GenerateAst {
 		String outputDir = "";
 		
 		if (args.length == 0) {
-			outputDir = "C:\\Users\\Maciej\\Desktop\\Eclipse\\src\\lox\\main";
+			outputDir = "../main/";
 		} else if (args.length != 1) {
 			System.err.println("Usage: generate_ast <output directory>");
 			System.exit(1);
@@ -22,6 +22,11 @@ public class GenerateAst {
 				"Grouping	: Expr expression",
 				"Literal	: Object value",
 				"Unary		: Token operator, Expr right"
+			));
+
+		defineAst(outputDir, "Stmt", Arrays.asList(
+				"Expression : Expr expression",
+				"Print      : Expr expression"
 			));
 	}
 	
