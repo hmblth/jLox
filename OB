@@ -1,0 +1,167 @@
+[1mdiff --git a/.idea/workspace.xml b/.idea/workspace.xml[m
+[1mindex a84fa7c..e48c351 100644[m
+[1m--- a/.idea/workspace.xml[m
+[1m+++ b/.idea/workspace.xml[m
+[36m@@ -1,17 +1,7 @@[m
+ <?xml version="1.0" encoding="UTF-8"?>[m
+ <project version="4">[m
+   <component name="ChangeListManager">[m
+[31m-    <list default="true" id="c84c8955-8dde-4f94-9d89-3009c02bf76a" name="Default Changelist" comment="">[m
+[31m-      <change afterPath="$PROJECT_DIR$/src/lox/main/Interpreter.java" afterDir="false" />[m
+[31m-      <change afterPath="$PROJECT_DIR$/src/lox/main/RuntimeError.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/AstPrinter.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Expr.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Lox.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Parser.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/Scanner.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/main/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/main/TokenType.java" afterDir="false" />[m
+[31m-      <change beforePath="$PROJECT_DIR$/src/lox/tool/GenerateAst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lox/tool/GenerateAst.java" afterDir="false" />[m
+[31m-    </list>[m
+[32m+[m[32m    <list default="true" id="c84c8955-8dde-4f94-9d89-3009c02bf76a" name="Default Changelist" comment="" />[m
+     <ignored path="$PROJECT_DIR$/bin/" />[m
+     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />[m
+     <option name="SHOW_DIALOG" value="false" />[m
+[36m@@ -26,10 +16,10 @@[m
+           <entry key="project.closed" value="4" />[m
+           <entry key="project.open.time.11" value="1" />[m
+           <entry key="project.open.time.12" value="1" />[m
+[31m-          <entry key="project.open.time.13" value="1" />[m
+[32m+[m[32m          <entry key="project.open.time.13" value="2" />[m
+           <entry key="project.open.time.16" value="1" />[m
+           <entry key="project.open.time.18" value="1" />[m
+[31m-          <entry key="project.opened" value="5" />[m
+[32m+[m[32m          <entry key="project.opened" value="6" />[m
+         </counts>[m
+       </usages-collector>[m
+       <usages-collector id="statistics.file.extensions.open">[m
+[36m@@ -80,11 +70,11 @@[m
+           </provider>[m
+         </entry>[m
+       </file>[m
+[31m-      <file pinned="false" current-in-tab="false">[m
+[32m+[m[32m      <file pinned="false" current-in-tab="true">[m
+         <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">[m
+           <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="323">[m
+[31m-              <caret line="85" column="66" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />[m
+[32m+[m[32m            <state relative-caret-position="255">[m
+[32m+[m[32m              <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />[m
+             </state>[m
+           </provider>[m
+         </entry>[m
+[36m@@ -92,7 +82,7 @@[m
+       <file pinned="false" current-in-tab="false">[m
+         <entry file="file://$PROJECT_DIR$/src/lox/main/Parser.java">[m
+           <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="1683">[m
+[32m+[m[32m            <state relative-caret-position="880">[m
+               <caret line="103" selection-start-line="103" selection-end-line="103" />[m
+               <folding>[m
+                 <element signature="imports" expanded="true" />[m
+[36m@@ -101,19 +91,11 @@[m
+           </provider>[m
+         </entry>[m
+       </file>[m
+[31m-      <file pinned="false" current-in-tab="true">[m
+[32m+[m[32m      <file pinned="false" current-in-tab="false">[m
+         <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">[m
+           <provider selected="true" editor-type-id="text-editor">[m
+[31m-            <state relative-caret-position="255">[m
+[31m-              <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />[m
+[31m-              <folding>[m
+[31m-                <element signature="e#2340#2341#0" expanded="true" />[m
+[31m-                <element signature="e#2388#2389#0" expanded="true" />[m
+[31m-                <element signature="e#2459#2460#0" expanded="true" />[m
+[31m-                <element signature="e#2492#2493#0" expanded="true" />[m
+[31m-                <element signature="e#2931#2932#0" expanded="true" />[m
+[31m-                <element signature="e#2971#2972#0" expanded="true" />[m
+[31m-              </folding>[m
+[32m+[m[32m            <state relative-caret-position="748">[m
+[32m+[m[32m              <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />[m
+             </state>[m
+           </provider>[m
+         </entry>[m
+[36m@@ -178,9 +160,8 @@[m
+     <detection-done>true</detection-done>[m
+     <sorting>DEFINITION_ORDER</sorting>[m
+   </component>[m
+[31m-  <component name="ProjectFrameBounds" extendedState="6">[m
+[31m-    <option name="x" value="-8" />[m
+[31m-    <option name="y" value="-8" />[m
+[32m+[m[32m  <component name="ProjectFrameBounds" extendedState="7">[m
+[32m+[m[32m    <option name="x" value="-5" />[m
+     <option name="width" value="1936" />[m
+     <option name="height" value="1096" />[m
+   </component>[m
+[36m@@ -281,6 +262,7 @@[m
+       <workItem from="1542382510850" duration="412000" />[m
+       <workItem from="1542386227366" duration="7814000" />[m
+       <workItem from="1542396453802" duration="297000" />[m
+[32m+[m[32m      <workItem from="1542471629056" duration="679000" />[m
+     </task>[m
+     <servers />[m
+   </component>[m
+[36m@@ -296,10 +278,10 @@[m
+     </history-entry>[m
+   </component>[m
+   <component name="TimeTrackingManager">[m
+[31m-    <option name="totallyTimeSpent" value="9398000" />[m
+[32m+[m[32m    <option name="totallyTimeSpent" value="10077000" />[m
+   </component>[m
+   <component name="ToolWindowManager">[m
+[31m-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />[m
+[32m+[m[32m    <frame x="-8" y="-8" width="1936" height="1096" extended-state="7" />[m
+     <editor active="true" />[m
+     <layout>[m
+       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />[m
+[36m@@ -321,7 +303,7 @@[m
+       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />[m
+       <window_info anchor="bottom" id="Messages" order="11" weight="0.32952183" />[m
+       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />[m
+[31m-      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.18496802" />[m
+[32m+[m[32m      <window_info anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.18710022" />[m
+       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />[m
+       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />[m
+       <window_info anchor="right" id="Palette" order="4" />[m
+[36m@@ -390,16 +372,16 @@[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="323">[m
+[31m-          <caret line="85" column="66" selection-start-line="85" selection-start-column="66" selection-end-line="85" selection-end-column="66" />[m
+[32m+[m[32m        <state relative-caret-position="748">[m
+[32m+[m[32m          <caret line="50" column="58" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+     <entry file="file://$PROJECT_DIR$/src/lox/main/Parser.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+[31m-        <state relative-caret-position="1683">[m
+[32m+[m[32m        <state relative-caret-position="880">[m
+           <caret line="103" selection-start-line="103" selection-end-line="103" />[m
+           <folding>[m
+             <element signature="imports" expanded="true" />[m
+[36m@@ -407,18 +389,10 @@[m
+         </state>[m
+       </provider>[m
+     </entry>[m
+[31m-    <entry file="file://$PROJECT_DIR$/src/lox/main/Interpreter.java">[m
+[32m+[m[32m    <entry file="file://$PROJECT_DIR$/src/lox/main/Scanner.java">[m
+       <provider selected="true" editor-type-id="text-editor">[m
+         <state relative-caret-position="255">[m
+[31m-          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />[m
+[31m-          <folding>[m
+[31m-            <element signature="e#2340#2341#0" expanded="true" />[m
+[31m-            <element signature="e#2388#2389#0" expanded="true" />[m
+[31m-            <element signature="e#2459#2460#0" expanded="true" />[m
+[31m-            <element signature="e#2492#2493#0" expanded="true" />[m
+[31m-            <element signature="e#2931#2932#0" expanded="true" />[m
+[31m-            <element signature="e#2971#2972#0" expanded="true" />[m
+[31m-          </folding>[m
+[32m+[m[32m          <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />[m
+         </state>[m
+       </provider>[m
+     </entry>[m

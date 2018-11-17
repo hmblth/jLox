@@ -166,7 +166,7 @@ public class Scanner {
 		
 		TokenType type = keywords.get(text);
 		if (type == null) type = IDENTIFIER;
-		addToken(type);
+		addToken(type, text);
 	}
 	
 	private boolean isDigit(char c) {
