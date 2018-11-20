@@ -1,6 +1,10 @@
 
 package lox.main;
 
+import lox.classes.LoxBool;
+import lox.classes.LoxNum;
+import lox.classes.LoxString;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,12 +136,16 @@ public class Parser {
 	}
 	
 	private Expr primary() {
-		if (match(FALSE)) return new Expr.Literal(false);
-		if (match(TRUE)) return new Expr.Literal(true);
-		if (match(NIL)) return new Expr.Literal(null);
+		if (match(FALSE)) return new Expr.Literal(new LoxBool(false));
+		if (match(TRUE)) return new Expr.Literal(new LoxBool(true));
+		if (match(NIL)) return new Expr.Literal(new LoxBool(true));
 		
-		if (match(NUMBER, STRING)) {
-			return new Expr.Literal(previous().literal);
+		if (match(STRING)) {
+			return new Expr.Literal(new LoxString((String)previous().literal));
+		}
+
+		if (match(NUMBER)) {
+			return new Expr.Literal(new LoxNum((double)previous().literal));
 		}
 		
 		if (match(LEFT_PAREN)) {

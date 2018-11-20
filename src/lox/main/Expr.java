@@ -1,7 +1,7 @@
 
 package lox.main;
 
-import java.util.List;
+import lox.classes.ILoxObject;
 
 abstract class Expr {
 	interface Visitor<R> {
@@ -41,9 +41,9 @@ abstract class Expr {
 	}
 
 	static class Literal extends Expr {
-		final Object value;
+		final ILoxObject value;
 
-		Literal(Object value) {
+		Literal(ILoxObject value) {
 			this.value = value;
 		}
 

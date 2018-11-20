@@ -20,7 +20,7 @@ public class GenerateAst {
 		defineAst(outputDir, "Expr", Arrays.asList(
 				"Binary		: Expr left, Token operator, Expr right",
 				"Grouping	: Expr expression",
-				"Literal	: Object value",
+				"Literal	: ILoxObject value",
 				"Unary		: Token operator, Expr right",
 				"Variable   : Token name"
 			));
@@ -41,6 +41,7 @@ public class GenerateAst {
 		writer.println();
 		writer.println("package lox.main;");
 		writer.println();
+		writer.println("import lox.classes.ILoxObject");
 		writer.println("import java.util.List;");
 		writer.println();
 		writer.println("abstract class " + baseName + " {");

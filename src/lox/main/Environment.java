@@ -1,12 +1,14 @@
 package lox.main;
 
+import lox.classes.ILoxObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Environment {
-    private final Map<String, Object> values = new HashMap<>();
+    private final Map<String, ILoxObject> values = new HashMap<>();
 
-    Object get(Token name) {
+    ILoxObject get(Token name) {
         if (values.containsKey(name.lexeme)) {
             return values.get(name.lexeme);
         }
@@ -14,9 +16,9 @@ public class Environment {
         throw new RuntimeError(name, "Attempting to access undefined variable");
     }
 
-    void define(Token name, Object value) {
+    void define(Token name, ILoxObject value) {
         if(!values.containsKey(name.lexeme)) {
-            values.put((String)name.lexeme, value);
+            values.put(name.lexeme, value);
         }
 
         // throw an error if a variable with that name already exists
