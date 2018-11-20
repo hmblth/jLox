@@ -1,6 +1,7 @@
 package lox.main;
 
 import lox.classes.ILoxObject;
+import lox.errors.RuntimeError;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,6 +1,8 @@
 
 package lox.main;
 
+import lox.errors.RuntimeError;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

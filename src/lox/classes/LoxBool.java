@@ -1,11 +1,11 @@
 package lox.classes;
 
+import lox.errors.RuntimeError;
 import lox.main.Token;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class LoxBool implements ILoxObject {
-    private boolean value;
-    private LoxType type;
+    private final boolean value;
+    private final LoxType type;
 
     public LoxBool(boolean value) {
         this.value = value;
@@ -14,12 +14,12 @@ public class LoxBool implements ILoxObject {
 
     @Override
     public Object getValue() {
-        throw new NotImplementedException();
+        return this.value;
     }
 
     @Override
     public LoxType getType() {
-        throw new NotImplementedException();
+        return this.type;
     }
 
     @Override
@@ -28,42 +28,22 @@ public class LoxBool implements ILoxObject {
     }
 
     @Override
-    public ILoxObject add(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
+    public ILoxObject runUnaryOperations(Token operator) {
+        switch(operator.type) {
+            case BANG:
+                return bool(operator);
+        }
+
+        // TODO: Rewrite error reporting
+        throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using type " + this.getType());
     }
 
     @Override
-    public ILoxObject subtract(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
+    public ILoxObject runBinaryOperations(Token operator, ILoxObject other) {
+        throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
     }
 
-    @Override
-    public ILoxObject multiply(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject divide(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject power(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject compare(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject minus(Token operator) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject bool(Token operator) {
-        throw new NotImplementedException();
+    private ILoxObject bool(Token operator) {
+        return new LoxBool(!value);
     }
 }

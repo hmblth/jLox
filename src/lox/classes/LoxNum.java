@@ -1,12 +1,11 @@
 package lox.classes;
 
-import lox.main.RuntimeError;
+import lox.errors.RuntimeError;
 import lox.main.Token;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class LoxNum implements ILoxObject {
-    private double value; // TODO: implement big nums instead of doubles
-    private LoxType type;
+    private final double value; // TODO: implement big nums instead of doubles
+    private final LoxType type;
 
     public LoxNum(double value) {
         this.value = value;
@@ -24,74 +23,121 @@ public class LoxNum implements ILoxObject {
     }
 
     @Override
-    public String toString() {
-        return Double.toString(this.value);
+    public String toString() { // TODO: make using big nums, so it doesn't append .0 to ints
+       if(value - (int)value == 0) {
+           return Integer.toString((int)value);
+       } else return Double.toString(value);
     }
 
     @Override
-    public ILoxObject add(Token operator, ILoxObject other) {
+    public ILoxObject runUnaryOperations(Token operator) {
+        switch(operator.type) {
+            case MINUS:
+                return minus(operator);
+            case BANG:
+                return bool(operator);
+        }
+
+        throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using type " + this.type);
+    }
+
+    @Override
+    public ILoxObject runBinaryOperations(Token operator, ILoxObject other) {
+        switch(operator.type) {
+            case PLUS:
+                return add(operator, other);
+            case MINUS:
+                return subtract(operator, other);
+            case STAR:
+                return multiply(operator, other);
+            case SLASH:
+                return divide(operator, other);
+            case STAR_STAR:
+                return power(operator, other);
+            case GREATER:
+            case GREATER_EQUAL:
+            case LESS:
+            case LESS_EQUAL:
+            case BANG_EQUAL:
+            case EQUAL_EQUAL:
+                return compare(operator, other);
+            default:
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
+        }
+    }
+
+    private ILoxObject add(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxNum((double)this.getValue() + (double)other.getValue());
             case STRING:
                 return new LoxString(this.toString() + other.toString());
             default:
-                throw new RuntimeError(operator, "No overload method found for adding " + other.getType() + " to " + this.getType());
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
         }
     }
 
-    @Override
-    public ILoxObject subtract(Token operator, ILoxObject other) {
+    private ILoxObject subtract(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxNum((double)this.getValue() - (double)other.getValue());
             default:
-                throw new RuntimeError(operator, "No overload method found for subtracting " + other.getType() + " from " + this.getType());
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
         }
     }
 
-    @Override
-    public ILoxObject multiply(Token operator, ILoxObject other) {
+    private ILoxObject multiply(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxNum((double)this.getValue() * (double)other.getValue());
             default:
-                throw new RuntimeError(operator, "No overload method found for multiplying " + this.getType() + " by " + other.getType());
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
         }
     }
 
-    @Override
-    public ILoxObject divide(Token operator, ILoxObject other) {
+    private ILoxObject divide(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxNum((double)this.getValue() / (double)other.getValue());
             default:
-                throw new RuntimeError(operator, "No overload method found for dividing " + this.getType() + " by " + other.getType());
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
         }
     }
 
-    @Override
-    public ILoxObject power(Token operator, ILoxObject other) {
+    private ILoxObject power(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxNum(Math.pow((double)this.getValue(), (double)other.getValue()));
             default:
-                throw new RuntimeError(operator, "No overload method found for multiplying " + this.getType() + " by " + other.getType());
+                throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
         }
     }
 
-    @Override
-    public ILoxObject compare(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
+    private ILoxObject compare(Token operator, ILoxObject other) {
+        switch(operator.type) {
+            case GREATER:
+                return new LoxBool((double)this.getValue() > (double)other.getValue());
+            case GREATER_EQUAL:
+                return new LoxBool((double)this.getValue() >= (double)other.getValue());
+            case LESS:
+                return new LoxBool((double)this.getValue() < (double)other.getValue());
+            case LESS_EQUAL:
+                return new LoxBool((double)this.getValue() <= (double)other.getValue());
+            case BANG_EQUAL:
+                return new LoxBool((double)this.getValue() != (double)other.getValue());
+            case EQUAL_EQUAL:
+                return new LoxBool((double)this.getValue() == (double)other.getValue());
+        }
+
+        // unreachable
+        return null;
     }
 
-    @Override
-    public ILoxObject minus(Token operator) {
+    private ILoxObject minus(Token operator) {
         return new LoxNum(-1 * value);
     }
 
-    @Override
-    public ILoxObject bool(Token operator) {
-        throw new NotImplementedException();
+    private ILoxObject bool(Token operator) {
+        return new LoxBool(false);
     }
 }

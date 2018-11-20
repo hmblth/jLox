@@ -12,19 +12,26 @@ import static lox.main.TokenType.*;
 
 // same basic idea as scanner, only this time at a token level
 public class Parser {
+	// TODO: Create a ParseError class similar to RuntimeError and expand on it
 	private static class ParseError extends RuntimeException {}
 
 	private final List<Token> tokens;
+	private final List<ParseError> errors;
 	private int current = 0;
 	
 	Parser(List<Token> tokens) {
 		this.tokens = tokens;
+		this.errors = new ArrayList<ParseError>();
 	}
 
 	List<Stmt> parse() {
 	    List<Stmt> statements = new ArrayList<>();
-	    while (!isAtEnd()) {
-	    	statements.add(statement());
+
+	    try {
+			while (!isAtEnd()) {
+				statements.add(statement());
+			}
+		} catch (ParseError ex) {
 		}
 
 		return statements;
@@ -138,7 +145,7 @@ public class Parser {
 	private Expr primary() {
 		if (match(FALSE)) return new Expr.Literal(new LoxBool(false));
 		if (match(TRUE)) return new Expr.Literal(new LoxBool(true));
-		if (match(NIL)) return new Expr.Literal(new LoxBool(true));
+		if (match(NIL)) return new Expr.Literal(null);
 		
 		if (match(STRING)) {
 			return new Expr.Literal(new LoxString((String)previous().literal));

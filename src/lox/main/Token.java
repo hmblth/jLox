@@ -2,8 +2,8 @@
 package lox.main;
 
 public class Token {
-	final TokenType type;
-	final String lexeme;
+	public final TokenType type;
+	public final String lexeme;
 	final Object literal;
 	final int line;
 	final int column;

@@ -1,8 +1,7 @@
 package lox.classes;
 
-import lox.main.RuntimeError;
+import lox.errors.RuntimeError;
 import lox.main.Token;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class LoxString implements ILoxObject {
     private String value;
@@ -29,7 +28,28 @@ public class LoxString implements ILoxObject {
     }
 
     @Override
-    public ILoxObject add(Token operator, ILoxObject other) {
+    public ILoxObject runUnaryOperations(Token operator) {
+        switch(operator.type) {
+            case BANG:
+                return bool(operator);
+        }
+
+        throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme);
+    }
+
+    @Override
+    public ILoxObject runBinaryOperations(Token operator, ILoxObject other) {
+        switch(operator.type) {
+            case PLUS:
+                return add(operator, other);
+            case STAR:
+                return multiply(operator, other);
+        }
+
+        throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme);
+    }
+
+    private ILoxObject add(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxString(this.toString() + other.toString());
@@ -40,13 +60,7 @@ public class LoxString implements ILoxObject {
         }
     }
 
-    @Override
-    public ILoxObject subtract(Token operator, ILoxObject other) {
-        throw new RuntimeError(operator, "No overload method found for subtracting types " + this.getType() + " and " + other.getType());
-    }
-
-    @Override
-    public ILoxObject multiply(Token operator, ILoxObject other) {
+    private ILoxObject multiply(Token operator, ILoxObject other) {
         switch(other.getType()) {
             case NUMBER:
                 return new LoxString(multiplyString(operator, value, (double)other.getValue()));
@@ -55,29 +69,8 @@ public class LoxString implements ILoxObject {
         }
     }
 
-    @Override
-    public ILoxObject divide(Token operator, ILoxObject other) {
-        throw new RuntimeError(operator, "No overload method found for dividing types " + this.getType() + " and " + other.getType());
-    }
-
-    @Override
-    public ILoxObject power(Token operator, ILoxObject other) {
-        throw new RuntimeError(operator, "No overload method found for dividing types " + this.getType() + " and " + other.getType());
-    }
-
-    @Override
-    public ILoxObject compare(Token operator, ILoxObject other) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public ILoxObject minus(Token operator) {
-        throw new RuntimeError(operator, "No overload method found for negating type " + this.getType());
-    }
-
-    @Override
-    public ILoxObject bool(Token operator) {
-        throw new NotImplementedException();
+    private ILoxObject bool(Token operator) {
+        return new LoxBool(false);
     }
 
     private String multiplyString(Token operator, String value, double repetitions) {

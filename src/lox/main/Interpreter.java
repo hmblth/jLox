@@ -1,6 +1,8 @@
 package lox.main;
 
 import lox.classes.ILoxObject;
+import lox.classes.LoxObject;
+import lox.errors.RuntimeError;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
             for (Stmt statement : statements) {
                 execute(statement);
             }
-        } catch (RuntimeError error) { // could have a LoxError interface implemented by multiple errors
+        } catch (RuntimeError error) { // TODO: not fuck it up
             Lox.runtimeError(error);
         }
     }
@@ -22,28 +24,7 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
         ILoxObject left = evaluate(expr.left);
         ILoxObject right = evaluate(expr.right);
 
-        switch (expr.operator.type) {
-            case PLUS:
-                return left.add(expr.operator, right);
-            case MINUS:
-                return left.subtract(expr.operator, right);
-            case SLASH:
-                return left.divide(expr.operator, right);
-            case STAR:
-                return left.multiply(expr.operator, right);
-            case STAR_STAR:
-                return left.power(expr.operator, right);
-            case GREATER:
-            case GREATER_EQUAL:
-            case LESS:
-            case LESS_EQUAL:
-            case BANG_EQUAL:
-            case EQUAL_EQUAL:
-                return left.compare(expr.operator, right);
-        }
-
-        // unreachable
-        return null;
+        return LoxObject.calculate(expr.operator, new ILoxObject[]{left, right});
     }
 
     @Override
@@ -60,15 +41,7 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
     public ILoxObject visitUnaryExpr(Expr.Unary expr) {
         ILoxObject right = evaluate(expr.right);
 
-        switch (expr.operator.type) {
-            case BANG:
-                return right.bool(expr.operator);
-            case MINUS:
-                return right.minus(expr.operator);
-        }
-
-        // unreachable
-        return null;
+        return LoxObject.calculate(expr.operator, new ILoxObject[]{right});
     }
 
     @Override

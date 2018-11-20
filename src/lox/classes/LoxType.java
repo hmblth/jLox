@@ -1,7 +1,7 @@
 package lox.classes;
 
 public enum LoxType {
-    NULL,
+    UNKNOWN,
     BOOLEAN,
     NUMBER,
     STRING
