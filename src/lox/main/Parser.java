@@ -133,15 +133,15 @@ public class Parser {
 	}
 
 	private Expr unary() {
-		if (match(BANG, MINUS)) {
+		if (match(BANG, MINUS, PLUS_PLUS, MINUS_MINUS)) {
 			Token operator = previous();
 			Expr right = unary();
 			return new Expr.Unary(operator, right);
 		}
-		
+
 		return primary();
 	}
-	
+
 	private Expr primary() {
 		if (match(FALSE)) return new Expr.Literal(new LoxBool(false));
 		if (match(TRUE)) return new Expr.Literal(new LoxBool(true));

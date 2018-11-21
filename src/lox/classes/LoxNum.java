@@ -36,6 +36,10 @@ public class LoxNum implements ILoxObject {
                 return minus(operator);
             case BANG:
                 return bool(operator);
+            case PLUS_PLUS:
+                return add(operator, new LoxNum(1));
+            case MINUS_MINUS:
+                return subtract(operator, new LoxNum(1));
         }
 
         throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using type " + this.type);

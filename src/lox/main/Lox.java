@@ -58,6 +58,11 @@ public class Lox {
 	private static void run(String source) {
 		Scanner scanner = new Scanner(source);
 		List<Token> tokens = scanner.scanTokens();
+
+		for(Token token : tokens) {
+			System.out.println(token);
+		}
+
 		Parser parser = new Parser(tokens);
 		List<Stmt> statements = parser.parse();
 
@@ -82,7 +87,7 @@ public class Lox {
 	}
 
 	static void runtimeError(RuntimeError error) {
-		System.err.println("(" + error.token.line + ":" + error.token.column + ") Runtime Error:" + error.getMessage());
+		System.err.println("(" + error.token.line + ":" + error.token.column + ") Runtime Error: " + error.getMessage());
 		hadRuntimeError = true;
 	}
 	

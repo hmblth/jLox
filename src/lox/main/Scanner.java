@@ -74,8 +74,6 @@ public class Scanner {
 			case '}': addToken(RIGHT_BRACE); break;
 			case ',': addToken(COMMA); break;
 			case '.': addToken(DOT); break;
-			case '-': addToken(MINUS); break;
-			case '+': addToken(PLUS); break;
 			case ';': addToken(SEMICOLON); break;
 
 			// possible double character tokens
@@ -84,7 +82,9 @@ public class Scanner {
 			case '=': addToken(match('=') ? EQUAL_EQUAL : EQUAL); break;
 			case '<': addToken(match('=') ? LESS_EQUAL : LESS); break;
 			case '>': addToken(match('=') ? GREATER_EQUAL : GREATER); break;
-			
+			case '+': addToken(match('+') ? PLUS_PLUS : PLUS); break;
+			case '-': addToken(match('-') ? MINUS_MINUS : MINUS); break;
+
 			// / character - possible comment
 			case '/':
 				if (match('/')) {
