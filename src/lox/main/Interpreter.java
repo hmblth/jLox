@@ -20,6 +20,14 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
     }
 
     @Override
+    public ILoxObject visitAssignExpr(Expr.Assign expr) {
+        ILoxObject value = evaluate(expr.value);
+
+        environment.assign(expr.name, value);
+        return value;
+    }
+
+    @Override
     public ILoxObject visitBinaryExpr(Expr.Binary expr) {
         ILoxObject left = evaluate(expr.left);
         ILoxObject right = evaluate(expr.right);
@@ -47,6 +55,12 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
     @Override
     public ILoxObject visitVariableExpr(Expr.Variable expr) {
         return environment.get(expr.name);
+    }
+
+    @Override
+    public Void visitBlockStmt(Stmt.Block stmt) {
+        executeBlock(stmt.statements, new Environment(environment));
+        return null;
     }
 
     @Override
@@ -79,5 +93,18 @@ public class Interpreter implements Expr.Visitor<ILoxObject>, Stmt.Visitor<Void>
 
     private void execute(Stmt stmt) {
         stmt.accept(this);
+    }
+
+    void executeBlock(List<Stmt> statements, Environment environment) {
+        Environment previous = this.environment;
+        try {
+            this.environment = environment;
+
+            for (Stmt statement : statements) {
+                execute(statement);
+            }
+        } finally {
+            this.environment = previous;
+        }
     }
 }

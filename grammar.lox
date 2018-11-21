@@ -1,11 +1,19 @@
-program        -> statement* EOF
+program        -> declaration* EOF
+
+declaration    -> varDecl
+                | statement
+
+varDecl        -> "var" IDENTIFIER ( "=" expression )? ";"
+
 statement      -> exprStmt 
                 | printStmt
-                | varStmt
+                | inputStmt
+                | block
+
+block          -> "{" declaration* "}"
 
 exprStmt       -> expression ";"
 printStmt      -> "print" expression ";"
-varStmt        -> "let" INDENTIFIER ( "=" primary )*
 
 expression     -> assignment
 assignment     -> IDENTIFIER "=" assignment
@@ -16,5 +24,8 @@ addition       -> multiplication ( ( "-" | "+" ) multiplication )*
 multiplication -> unary ( ( "/" | "*" ) unary )*
 unary          -> ( "-" | "!" | "++" | "--" ) unary | primary
                 | unary | primary ( "++" | "--" )
-primary        -> NUMBER | STRING | "true" | "false" | "nil"
+primary        -> NUMBER | STRING
+                | "true" | "false" | "nil" | "this"
                 | "(" expression ")"
+                | IDENTIFIER
+

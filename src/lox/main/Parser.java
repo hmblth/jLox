@@ -29,7 +29,7 @@ public class Parser {
 
 	    try {
 			while (!isAtEnd()) {
-				statements.add(statement());
+				statements.add(declaration());
 			}
 		} catch (ParseError ex) {
 		}
@@ -37,10 +37,45 @@ public class Parser {
 		return statements;
     }
 
+    private Stmt declaration() {
+		try {
+			if (match(VAR)) return varDeclaration();
+
+			return statement();
+		} catch (ParseError error) {
+			synchronize();
+			return null;
+		}
+	}
+
+	private Stmt varDeclaration() {
+		Token name = consume(IDENTIFIER, "Expected variable name");
+
+		Expr initializer = null;
+		if (match(EQUAL)) {
+			initializer = expression();
+		}
+
+		consume(SEMICOLON, "Expected ';' after variable declaration");
+		return new Stmt.Variable(name, initializer);
+	}
+
     private Stmt statement() {
 		if (match(PRINT)) return printStatement();
+		if (match(LEFT_BRACE)) return new Stmt.Block(block());
 
 		return expressionStatement();
+	}
+
+	private List<Stmt> block() {
+		List<Stmt> statements = new ArrayList<>();
+
+		while (!check(RIGHT_BRACE) && !isAtEnd()) {
+			statements.add(declaration());
+		}
+
+		consume(RIGHT_BRACE, "Expected '}' after block");
+		return statements;
 	}
 
 	private Stmt printStatement() {
@@ -60,13 +95,30 @@ public class Parser {
 	}
 
 	private Expr comma() {
-		Expr expr = equality();
+		Expr expr = assignment();
 
 		while (match(COMMA)) {
-			expr = equality();
+			expr = assignment();
 		}
 
 		return expr;
+	}
+
+	private Expr assignment() {
+		Expr expr = equality();
+
+		if (match(EQUAL)) {
+			Token equals = previous();
+			Expr value = assignment();
+
+			if (expr instanceof Expr.Variable) {
+				Token name = ((Expr.Variable)expr).name;
+				return new Expr.Assign(name, value);
+			}
+
+			error(equals, "Invalid assignment target");
+		}
+		 return expr;
 	}
 
 	private Expr equality() {
@@ -153,6 +205,10 @@ public class Parser {
 
 		if (match(NUMBER)) {
 			return new Expr.Literal(new LoxNum((double)previous().literal));
+		}
+
+		if (match(IDENTIFIER)) {
+			return new Expr.Variable(previous());
 		}
 		
 		if (match(LEFT_PAREN)) {
