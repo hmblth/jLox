@@ -7,7 +7,6 @@ varDecl        -> "var" IDENTIFIER ( "=" expression )? ";"
 
 statement      -> exprStmt 
                 | printStmt
-                | inputStmt
                 | block
 
 block          -> "{" declaration* "}"
