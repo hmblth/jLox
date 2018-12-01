@@ -94,6 +94,7 @@ public class LoxString implements ILoxObject {
             case BANG_EQUAL:
                 return new LoxBool((result != 0) ? true : false);
             case EQUAL_EQUAL:
+            case EQUAL_EH:
                 return new LoxBool((result == 0) ? true : false);
         }
 

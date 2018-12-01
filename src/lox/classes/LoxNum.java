@@ -64,6 +64,7 @@ public class LoxNum implements ILoxObject {
             case LESS_EQUAL:
             case BANG_EQUAL:
             case EQUAL_EQUAL:
+            case EQUAL_EH:
                 return compare(operator, other);
             default:
                 throw new RuntimeError(operator, "Unable to find a method for operator " + operator.lexeme + " using types " + this.getType() + " and " + other.getType());
@@ -130,6 +131,7 @@ public class LoxNum implements ILoxObject {
             case BANG_EQUAL:
                 return new LoxBool((double)this.getValue() != (double)other.getValue());
             case EQUAL_EQUAL:
+            case EQUAL_EH:
                 return new LoxBool((double)this.getValue() == (double)other.getValue());
         }
 

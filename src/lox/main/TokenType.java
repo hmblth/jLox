@@ -8,7 +8,7 @@ public enum TokenType {
 
 	// One or two character tokens
 	BANG, BANG_EQUAL,
-	EQUAL, EQUAL_EQUAL,
+	EQUAL, EQUAL_EQUAL, EQUAL_EH,
 	GREATER, GREATER_EQUAL,
 	LESS, LESS_EQUAL,
     STAR_STAR, PLUS_PLUS,

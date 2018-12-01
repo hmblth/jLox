@@ -1,5 +1,4 @@
 .metadata
-.idea/
 bin/
 tmp/
 *.tmp
@@ -46,6 +45,10 @@ local.properties
 
 # Code Recommenders
 .recommenders/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
 
 # Annotation Processing
 .apt_generated/

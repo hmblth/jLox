@@ -79,7 +79,7 @@ public class Scanner {
 			// possible double character tokens
 			case '*': addToken(match('*') ? STAR_STAR : STAR ); break;
 			case '!': addToken(match('=') ? BANG_EQUAL : BANG); break;
-			case '=': addToken(match('=') ? EQUAL_EQUAL : EQUAL); break;
+			case '=': addToken(match('=') ? EQUAL_EQUAL : match('a') ? EQUAL_EH : EQUAL); break;
 			case '<': addToken(match('=') ? LESS_EQUAL : LESS); break;
 			case '>': addToken(match('=') ? GREATER_EQUAL : GREATER); break;
 			case '+': addToken(match('+') ? PLUS_PLUS : PLUS); break;

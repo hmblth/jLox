@@ -126,7 +126,7 @@ public class Parser {
 		Expr expr = comparison();
 		
 		// builds up a single expression for multiple operators
-		while (match(BANG_EQUAL, EQUAL_EQUAL)) {
+		while (match(BANG_EQUAL, EQUAL_EQUAL, EQUAL_EH)) {
 			Token operator = previous();
 			Expr right = comparison();
 			expr = new Expr.Binary(expr, operator, right);
